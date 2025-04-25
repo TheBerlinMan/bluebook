@@ -8,8 +8,9 @@ export async function getAllCustomers() {
         await connectDB();
         const customers = await CustomerModel.find();
         return NextResponse.json(customers);
-    } catch (error) {
-        return NextResponse.json({ error: "Failed to fetch customers" }, { status: 500 });
+    } catch (error: any) {
+        console.error("getAllCustomers error:", error);
+        return NextResponse.json({ error: error.message || "Failed to fetch customers" }, { status: 500 });
     }
 }
 
@@ -47,8 +48,9 @@ export async function getCustomerById(id: string) {
         await connectDB();
         const customer = await CustomerModel.findById(id);
         return NextResponse.json(customer);
-    } catch (error) {
-        return NextResponse.json({ error: "Failed to get customer" }, { status: 500 });
+    } catch (error: any) {
+        console.error("getCustomerById error:", error);
+        return NextResponse.json({ error: error.message || "Failed to get customer" }, { status: 500 });
     }
 }
 
@@ -58,8 +60,9 @@ export async function updateCustomer(id: string, request: NextRequest) {
         const { firstName, lastName, address, message, orderStatus, images, domesticShipping, willPayShipping, priority } = await request.json();
         const customer = await CustomerModel.findByIdAndUpdate(id, { firstName, lastName, address, message, orderStatus, images, domesticShipping, willPayShipping, priority });
         return NextResponse.json(customer);
-    } catch (error) {
-        return NextResponse.json({ error: "Failed to update customer" }, { status: 500 });
+    } catch (error: any) {
+        console.error("updateCustomer error:", error);
+        return NextResponse.json({ error: error.message || "Failed to update customer" }, { status: 500 });
     }
 }
 
@@ -68,8 +71,9 @@ export async function deleteCustomer(id: string) {
         await connectDB();
         const customer = await CustomerModel.findByIdAndDelete(id);
         return NextResponse.json(customer);
-    } catch (error) {
-        return NextResponse.json({ error: "Failed to delete customer" }, { status: 500 });
+    } catch (error: any) {
+        console.error("deleteCustomer error:", error);
+        return NextResponse.json({ error: error.message || "Failed to delete customer" }, { status: 500 });
     }
 }
 
