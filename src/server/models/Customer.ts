@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Schema, Document, Model } from "mongoose";
 
-import type { Customer as CustomerType, Address } from "@/types/Customer";
+import type { Customer as CustomerType, Address } from "@/types/Customer/Customer";
 
 export interface CustomerDocument extends CustomerType, Document {
   message?: string;
