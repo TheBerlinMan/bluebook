@@ -16,8 +16,8 @@ export async function getAllCustomers() {
 export async function createCustomer(request: NextRequest) {
     try {
         await connectDB();
-        const { firstName, lastName, address, message, domesticShipping, willPayShipping } = await request.json();
-        const customer = await CustomerModel.create({ firstName, lastName, address, message, domesticShipping, willPayShipping });
+        const { firstName, lastName, address, message, domesticShipping, willPayShipping, priority } = await request.json();
+        const customer = await CustomerModel.create({ firstName, lastName, address, message, domesticShipping, willPayShipping, priority });
         return NextResponse.json(customer);
     } catch (error) {
         return NextResponse.json({ error: "Failed to create customer" }, { status: 500 });
@@ -37,8 +37,8 @@ export async function getCustomerById(id: string) {
 export async function updateCustomer(id: string, request: NextRequest) {
     try {
         await connectDB();
-        const { firstName, lastName, address, message, orderStatus, images, domesticShipping, willPayShipping } = await request.json();
-        const customer = await CustomerModel.findByIdAndUpdate(id, { firstName, lastName, address, message, orderStatus, images, domesticShipping, willPayShipping });
+        const { firstName, lastName, address, message, orderStatus, images, domesticShipping, willPayShipping, priority } = await request.json();
+        const customer = await CustomerModel.findByIdAndUpdate(id, { firstName, lastName, address, message, orderStatus, images, domesticShipping, willPayShipping, priority });
         return NextResponse.json(customer);
     } catch (error) {
         return NextResponse.json({ error: "Failed to update customer" }, { status: 500 });

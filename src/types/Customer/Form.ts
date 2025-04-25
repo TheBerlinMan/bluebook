@@ -10,5 +10,7 @@ export interface CustomerFormData {
     };
     isInternational: boolean;
     willPayShipping: boolean;
-    message: string;
+    priority?: number;
+    completedOn?: Date;
+    message?: string;
   }

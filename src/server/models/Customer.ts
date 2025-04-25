@@ -1,16 +1,9 @@
 import mongoose from "mongoose";
 import { Schema, Document, Model } from "mongoose";
 
-import type { Customer as CustomerType, Address } from "@/types/Customer/Customer";
+import type { Customer as CustomerType, Address } from "@/types/Customer/";
 
-export interface CustomerDocument extends CustomerType, Document {
-  message?: string;
-  orderStatus: "pending" | "completed" | "cancelled" | "working";
-  images?: string[];
-  domesticShipping: boolean;
-  willPayShipping: boolean;
-  completedOn: Date;
-}
+export interface CustomerDocument extends CustomerType, Document {}
 
 const AddressSchema = new Schema<Address>(
   {
@@ -40,6 +33,7 @@ const CustomerSchema = new Schema<CustomerDocument>(
     images: { type: [String], required: false },
     domesticShipping: { type: Boolean, required: true },
     willPayShipping: { type: Boolean, required: true },
+    priority: { type: Number, required: true },
     completedOn: { type: Date, required: false },
   },
   {

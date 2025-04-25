@@ -6,7 +6,6 @@ import { Info } from "lucide-react";
 import React from 'react'
 import { CustomerFormData } from "@/types/Customer";
 
-
 const initialFormData: CustomerFormData = {
   firstName: "",
   lastName: "",
@@ -19,7 +18,6 @@ const initialFormData: CustomerFormData = {
   },
   isInternational: false,
   willPayShipping: false,
-  message: "",
 };
 
 const NewCustomerForm = () => {

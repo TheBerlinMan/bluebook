@@ -1,14 +1,6 @@
-"use client";
-import { useState } from "react";
 
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Info } from "lucide-react";
 import NewCustomerForm from "@/components/NewCustomerForm";
 
 export default function Home() {
