@@ -2,13 +2,13 @@
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import NewCustomerForm from "@/components/NewCustomerForm";
-
+import CustomerList from "@/components/CustomerList";
 export default function Home() {
   
 
   return (
     <div className="p-6">
-      <NewCustomerForm />
+      <CustomerList />
       <div className="flex gap-4">
         {/* <div className="mx-auto">
             <Image
