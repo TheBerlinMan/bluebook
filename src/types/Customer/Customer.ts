@@ -8,7 +8,7 @@ export interface Customer {
     images?: string[];
     domesticShipping: boolean;
     willPayShipping: boolean;
-    priority: number;
+    priority?: number;
     completedOn?: Date;
   }
 

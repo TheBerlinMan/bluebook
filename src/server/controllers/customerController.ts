@@ -16,11 +16,29 @@ export async function getAllCustomers() {
 export async function createCustomer(request: NextRequest) {
     try {
         await connectDB();
-        const { firstName, lastName, address, message, domesticShipping, willPayShipping, priority } = await request.json();
-        const customer = await CustomerModel.create({ firstName, lastName, address, message, domesticShipping, willPayShipping, priority });
+        const body = await request.json();
+        // Determine priority: use provided override or auto-increment based on last customer
+        let newPriority: number;
+        if (typeof body.priority === 'number') {
+            newPriority = body.priority;
+        } else {
+            const lastCustomer = await CustomerModel.findOne().sort({ priority: -1 }).select('priority').lean();
+            newPriority = lastCustomer?.priority != null ? lastCustomer.priority + 1 : 1;
+        }
+        const { firstName, lastName, address, message, domesticShipping, willPayShipping } = body;
+        const customer = await CustomerModel.create({
+            firstName,
+            lastName,
+            address,
+            message,
+            domesticShipping,
+            willPayShipping,
+            priority: newPriority,
+        });
         return NextResponse.json(customer);
-    } catch (error) {
-        return NextResponse.json({ error: "Failed to create customer" }, { status: 500 });
+    } catch (error: any) {
+        console.error("createCustomer error:", error);
+        return NextResponse.json({ error: error.message || "Failed to create customer" }, { status: 500 });
     }
 }
 

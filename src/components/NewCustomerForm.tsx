@@ -41,14 +41,17 @@ const NewCustomerForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error("Network error");
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Network error");
+      }
 
       alert("Thanks! Your request has been submitted.");
       // reset form:
       setFormData(initialFormData);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      alert("Oops! Something went wrong.");
+      alert(err.message || "Oops! Something went wrong.");
     }
   };
   return (

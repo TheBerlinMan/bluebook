@@ -33,7 +33,7 @@ const CustomerSchema = new Schema<CustomerDocument>(
     images: { type: [String], required: false },
     domesticShipping: { type: Boolean, required: true },
     willPayShipping: { type: Boolean, required: true },
-    priority: { type: Number, required: true },
+    priority: { type: Number, required: false },
     completedOn: { type: Date, required: false },
   },
   {
