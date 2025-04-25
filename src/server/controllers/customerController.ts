@@ -16,8 +16,8 @@ export async function getAllCustomers() {
 export async function createCustomer(request: NextRequest) {
     try {
         await connectDB();
-        const { firstName, lastName, address, message, orderStatus, images, domesticShipping, willPayShipping } = await request.json();
-        const customer = await CustomerModel.create({ firstName, lastName, address, message, orderStatus, images, domesticShipping, willPayShipping });
+        const { firstName, lastName, address, message, domesticShipping, willPayShipping } = await request.json();
+        const customer = await CustomerModel.create({ firstName, lastName, address, message, domesticShipping, willPayShipping });
         return NextResponse.json(customer);
     } catch (error) {
         return NextResponse.json({ error: "Failed to create customer" }, { status: 500 });

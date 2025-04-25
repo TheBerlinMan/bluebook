@@ -9,4 +9,4 @@ export async function GET(request: NextRequest) {
 // CREATE a new customer
 export async function POST(request: NextRequest) {
   return await customerController.createCustomer(request);
-}
+} 
