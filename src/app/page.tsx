@@ -4,7 +4,7 @@ import NewCustomerForm from "@/components/NewCustomerForm";
 import CustomerList from "@/components/CustomerList";
 export default function Home() {
   return (
-    <div className="max-w-sm">
+    <div className="max-w-sm p-4 mx-auto">
       <div className="flex gap-4">
         {/* <div className="mx-auto">
             <Image

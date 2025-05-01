@@ -62,8 +62,8 @@ const NewCustomerForm = () => {
           {/* HEADER */}
           <div>
             <p className="text-blue-800 font-normal">
-              The blue book is free of charge, if you'd like one please submit
-              your name and mailing address.
+              The blue book is free of charge. If you'd like one please submit
+              your name, email, and mailing address.
             </p>
           </div>
 
@@ -182,8 +182,10 @@ const NewCustomerForm = () => {
               <label htmlFor="name">I'll pay for shipping</label>
             </div>
             <Tooltip>
-              <TooltipTrigger>
-                <Info size={16} />
+              <TooltipTrigger asChild>
+                <button type="button" className="p-1 hover:bg-gray-100 rounded-full">
+                  <Info size={16} />
+                </button>
               </TooltipTrigger>
               <TooltipContent className="max-w-[200px]">
                 <p>
@@ -196,7 +198,7 @@ const NewCustomerForm = () => {
 
           {/* COMMENTS */}
           <div className="flex flex-col">
-            <label htmlFor="comments">Leave me a note...</label>
+            <label htmlFor="comments">Leave a note</label>
             <textarea
               id="comments"
               placeholder="Message"
