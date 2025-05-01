@@ -9,6 +9,7 @@ import { CustomerFormData } from "@/types/Customer";
 const initialFormData: CustomerFormData = {
   firstName: "",
   lastName: "",
+  email: "",
   address: {
     streetAddress: "",
     streetAddress2: "",
@@ -29,6 +30,7 @@ const NewCustomerForm = () => {
     const payload = {
       firstName: formData.firstName,
       lastName: formData.lastName,
+      email: formData.email,
       address: formData.address,
       domesticShipping: !formData.isInternational,
       willPayShipping: formData.willPayShipping,
@@ -55,25 +57,24 @@ const NewCustomerForm = () => {
     }
   };
   return (
-    <div id="modal-form">
-        <form onSubmit={handleSubmit} className="w-[350px] flex flex-col gap-4">
+    <div id="modal-form" className="w-full">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
           {/* HEADER */}
           <div>
             <p className="text-blue-800 font-normal">
-              {/* move into the modal */}
               The blue book is free of charge, if you'd like one please submit
               your name and mailing address.
             </p>
           </div>
 
-          {/* FIRST & LAST */}
-          <div className="flex gap-4">
+          {/* FIRST & LAST & EMAIL */}
+          <div className="grid grid-cols-2 gap-4 w-full">
             <div className="flex flex-col">
               <label htmlFor="name">First Name</label>
               <input
                 type="text"
                 placeholder="First Name"
-                className="border-2 border-gray-300 rounded-md p-2"
+                className="border-2 border-gray-300 rounded-md p-2 w-full"
                 value={formData.firstName}
                 onChange={e => setFormData({ ...formData, firstName: e.target.value })}
               />
@@ -83,12 +84,22 @@ const NewCustomerForm = () => {
               <input
                 type="text"
                 placeholder="Last Name"
-                className="border-2 border-gray-300 rounded-md p-2"
+                className="border-2 border-gray-300 rounded-md p-2 w-full"
                 value={formData.lastName}
                 onChange={e => setFormData({ ...formData, lastName: e.target.value })}
               />
             </div>
           </div>
+            <div className="flex flex-col">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                placeholder="Email"
+                className="border-2 border-gray-300 rounded-md p-2 w-full"
+                value={formData.email}
+                onChange={e => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
 
           {/* US SHIPPING? */}
           <div className="flex justify-between">

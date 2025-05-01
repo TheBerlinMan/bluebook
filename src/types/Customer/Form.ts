@@ -1,6 +1,7 @@
 export interface CustomerFormData {
     firstName: string;
     lastName: string;
+    email: string;
     address: {
       streetAddress: string;
       streetAddress2: string;

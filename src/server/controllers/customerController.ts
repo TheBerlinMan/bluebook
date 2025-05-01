@@ -26,10 +26,11 @@ export async function createCustomer(request: NextRequest) {
             const lastCustomer = await CustomerModel.findOne().sort({ priority: -1 }).select('priority').lean();
             newPriority = lastCustomer?.priority != null ? lastCustomer.priority + 1 : 1;
         }
-        const { firstName, lastName, address, message, domesticShipping, willPayShipping } = body;
+        const { firstName, lastName, address, message, domesticShipping, willPayShipping, email } = body;
         const customer = await CustomerModel.create({
             firstName,
             lastName,
+            email,
             address,
             message,
             domesticShipping,

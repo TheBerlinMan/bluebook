@@ -1,14 +1,10 @@
-
 import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import NewCustomerForm from "@/components/NewCustomerForm";
 import CustomerList from "@/components/CustomerList";
 export default function Home() {
-  
-
   return (
-    <div className="p-6">
-      <CustomerList />
+    <div className="max-w-sm">
       <div className="flex gap-4">
         {/* <div className="mx-auto">
             <Image
@@ -19,19 +15,15 @@ export default function Home() {
               className="rounded-md shadow-md"
             />
         </div> */}
-        <div className="mx-auto max-w-lg">
+        {/* <div className="mx-auto">
           <Card className="px-4 mx-auto items-center">
             <p className="text-blue-800 font-normal">
-              Every Blue Book is unique and hand made by me.
+              Each Blue Book is unique and hand made by me. If you'd like one,
+              just sign up.
             </p>
-            <p className="text-blue-800 font-normal">
-              Want one? Just sign up for the waitlist.
-            </p>
-            <button className="bg-blue-800 text-white px-4 py-2 rounded-md">
+            <button className="bg-blue-800 font-bold text-white px-4 py-2 rounded-md">
               Sign up
             </button>
-          </Card>
-          <Card className="px-4">
             <p className="text-blue-800 font-normal">
               Blue Book was inspired by Moleskin pocket notebooks and the Blue
               Book Examination booklets from my childhood. Each one is hand made
@@ -39,10 +31,12 @@ export default function Home() {
               the waitlist.
             </p>
           </Card>
-        </div>
+        </div> */}
       </div>
-
-      
+      {/* <Card className="px-4">
+        <CustomerList />
+      </Card> */}
+      <NewCustomerForm />
     </div>
   );
 }

@@ -22,6 +22,7 @@ const CustomerSchema = new Schema<CustomerDocument>(
   {
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    email: { type: String, required: true },
     address: { type: AddressSchema, required: true },
     message: { type: String, required: false },
     orderStatus: {

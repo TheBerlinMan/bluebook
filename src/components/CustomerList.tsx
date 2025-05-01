@@ -34,7 +34,7 @@ export default function CustomerList() {
   }
 
   return (
-    <table className="min-w-full border-collapse">
+    <table className="min-w-full border-collapse border-2 border-blue-800 rounded-md">
       <thead>
         <tr>
           <th className="border px-4 py-2 text-left">Priority</th>
