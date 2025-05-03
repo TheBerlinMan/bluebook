@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import CustomerModel from "../models/Customer";
 import connectDB from "../database/mongodb";
+import type { Customer } from "@/types/Customer";
 
 export async function getAllCustomers() {
     try {
@@ -27,16 +28,20 @@ export async function createCustomer(request: NextRequest) {
             newPriority = lastCustomer?.priority != null ? lastCustomer.priority + 1 : 1;
         }
         const { firstName, lastName, address, message, domesticShipping, willPayShipping, email } = body;
-        const customer = await CustomerModel.create({
+        // build customer payload, including address only for domestic shipping
+        const customerPayload: Customer = {
             firstName,
             lastName,
             email,
-            address,
             message,
             domesticShipping,
             willPayShipping,
             priority: newPriority,
-        });
+        };
+        if (domesticShipping && address) {
+            customerPayload.address = address;
+        }
+        const customer = await CustomerModel.create(customerPayload);
         return NextResponse.json(customer);
     } catch (error: any) {
         console.error("createCustomer error:", error);

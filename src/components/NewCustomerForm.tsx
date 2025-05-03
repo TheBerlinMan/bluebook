@@ -35,7 +35,8 @@ const NewCustomerForm = () => {
       firstName: formData.firstName,
       lastName: formData.lastName,
       email: formData.email,
-      address: formData.address,
+      // include address only for domestic shipping
+      ...(formData.isInternational ? {} : { address: formData.address }),
       domesticShipping: !formData.isInternational,
       willPayShipping: formData.willPayShipping,
       message: formData.message,
@@ -62,7 +63,7 @@ const NewCustomerForm = () => {
   };
   return (
     <div id="modal-form" className="w-full">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full">
         {/* HEADER */}
         <div>
           <p className="text-blue-800 font-normal">
@@ -72,43 +73,45 @@ const NewCustomerForm = () => {
         </div>
 
         {/* FIRST & LAST & EMAIL */}
-        <div className="grid grid-cols-2 gap-4 w-full">
+        <div className="flex flex-col gap-1">
+          <div className="grid grid-cols-2 gap-2 w-full">
+            <div className="flex flex-col">
+              <label htmlFor="name">First Name</label>
+              <input
+                type="text"
+                placeholder="First Name"
+                className="border-2 border-gray-300 rounded-md p-2 w-full"
+                value={formData.firstName}
+                onChange={(e) =>
+                  setFormData({ ...formData, firstName: e.target.value })
+                }
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="name">Last Name</label>
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="border-2 border-gray-300 rounded-md p-2 w-full"
+                value={formData.lastName}
+                onChange={(e) =>
+                  setFormData({ ...formData, lastName: e.target.value })
+                }
+              />
+            </div>
+          </div>
           <div className="flex flex-col">
-            <label htmlFor="name">First Name</label>
+            <label htmlFor="email">Email</label>
             <input
-              type="text"
-              placeholder="First Name"
+              type="email"
+              placeholder="Email"
               className="border-2 border-gray-300 rounded-md p-2 w-full"
-              value={formData.firstName}
+              value={formData.email}
               onChange={(e) =>
-                setFormData({ ...formData, firstName: e.target.value })
+                setFormData({ ...formData, email: e.target.value })
               }
             />
           </div>
-          <div className="flex flex-col">
-            <label htmlFor="name">Last Name</label>
-            <input
-              type="text"
-              placeholder="Last Name"
-              className="border-2 border-gray-300 rounded-md p-2 w-full"
-              value={formData.lastName}
-              onChange={(e) =>
-                setFormData({ ...formData, lastName: e.target.value })
-              }
-            />
-          </div>
-        </div>
-        <div className="flex flex-col">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            placeholder="Email"
-            className="border-2 border-gray-300 rounded-md p-2 w-full"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-          />
         </div>
 
         {/* US SHIPPING? */}
@@ -129,50 +132,58 @@ const NewCustomerForm = () => {
         </div>
 
         {/* MAILING ADDRESS */}
-        <div>
-          <div className="flex flex-col">
-            <label htmlFor="name">Street Address</label>
-            <input
-              type="text"
-              placeholder="Street Address"
-              className="border-2 border-gray-300 rounded-md p-2"
-              value={formData.address.streetAddress}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  address: {
-                    ...formData.address,
-                    streetAddress: e.target.value,
-                  },
-                })
-              }
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="name">Street Address 2</label>
-            <input
-              type="text"
-              placeholder="Apt, Studio, etc."
-              className="border-2 border-gray-300 rounded-md p-2"
-              value={formData.address.streetAddress2}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  address: {
-                    ...formData.address,
-                    streetAddress2: e.target.value,
-                  },
-                })
-              }
-            />
+        <div className="flex flex-col gap-1">
+          <div>
+            <div className="flex flex-col">
+              <label htmlFor="name">Street Address</label>
+              <input
+                type="text"
+                placeholder="Street Address"
+                className="border-2 border-gray-300 rounded-md p-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200"
+                value={formData.address.streetAddress}
+                disabled={formData.isInternational}
+                required={!formData.isInternational}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    address: {
+                      ...formData.address,
+                      streetAddress: e.target.value,
+                    },
+                  })
+                }
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="name">Apt, Studio, etc.</label>
+              <input
+                type="text"
+                placeholder="Apt, Studio, etc."
+                className="border-2 border-gray-300 rounded-md p-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200"
+                value={formData.address.streetAddress2}
+                disabled={formData.isInternational}
+                required={!formData.isInternational}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    address: {
+                      ...formData.address,
+                      streetAddress2: e.target.value,
+                    },
+                  })
+                }
+              />
+            </div>
           </div>
           <div className="flex flex-col">
             <label htmlFor="name">City</label>
             <input
               type="text"
               placeholder="City"
-              className="border-2 border-gray-300 rounded-md p-2"
+              className="border-2 border-gray-300 rounded-md p-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200"
               value={formData.address.city}
+              disabled={formData.isInternational}
+              required={!formData.isInternational}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -181,35 +192,41 @@ const NewCustomerForm = () => {
               }
             />
           </div>
-          <div className="flex flex-col">
-            <label htmlFor="name">State</label>
-            <input
-              type="text"
-              placeholder="State"
-              className="border-2 border-gray-300 rounded-md p-2"
-              value={formData.address.state}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  address: { ...formData.address, state: e.target.value },
-                })
-              }
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="name">Zip Code</label>
-            <input
-              type="text"
-              placeholder="Zip Code"
-              className="border-2 border-gray-300 rounded-md p-2"
-              value={formData.address.zipcode}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  address: { ...formData.address, zipcode: e.target.value },
-                })
-              }
-            />
+          <div className="grid grid-cols-2 gap-2">
+            <div className="flex flex-col">
+              <label htmlFor="name">State</label>
+              <input
+                type="text"
+                placeholder="State"
+                className="border-2 border-gray-300 rounded-md p-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200"
+                value={formData.address.state}
+                disabled={formData.isInternational}
+                required={!formData.isInternational}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    address: { ...formData.address, state: e.target.value },
+                  })
+                }
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="name">Zip Code</label>
+              <input
+                type="text"
+                placeholder="Zip Code"
+                className="border-2 border-gray-300 rounded-md p-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-200"
+                value={formData.address.zipcode}
+                disabled={formData.isInternational}
+                required={!formData.isInternational}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    address: { ...formData.address, zipcode: e.target.value },
+                  })
+                }
+              />
+            </div>
           </div>
         </div>
 
@@ -250,7 +267,7 @@ const NewCustomerForm = () => {
           <label htmlFor="comments">Leave a note</label>
           <textarea
             id="comments"
-            placeholder="Message"
+            placeholder={formData.isInternational ? "Please write out your full mailing address" : "Message"}
             className="border-2 border-gray-300 rounded-md p-2"
             value={formData.message}
             onChange={(e) =>
@@ -270,7 +287,7 @@ const NewCustomerForm = () => {
 
       {/* FOOTER */}
       <div className="pt-4">
-        <p className="text-gray-500 font-normal">
+        <p className="text-blue-800 font-normal">
           Each blue book is handmade and made to order. They take about a day to
           make all together, but realistically I'll have it ready in one to two
           weeks.

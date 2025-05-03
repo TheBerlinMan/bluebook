@@ -7,11 +7,11 @@ export interface CustomerDocument extends CustomerType, Document {}
 
 const AddressSchema = new Schema<Address>(
   {
-    streetAddress: { type: String, required: true },
+    streetAddress: { type: String, required: false },
     streetAddress2: { type: String, required: false },
-    city: { type: String, required: true },
-    state: { type: String, required: true },
-    zipcode: { type: String, required: true },
+    city: { type: String, required: false },
+    state: { type: String, required: false },
+    zipcode: { type: String, required: false },
   },
   {
     _id: false,
@@ -23,7 +23,7 @@ const CustomerSchema = new Schema<CustomerDocument>(
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     email: { type: String, required: true },
-    address: { type: AddressSchema, required: true },
+    address: { type: AddressSchema, required: false },
     message: { type: String, required: false },
     orderStatus: {
       type: String,

@@ -3,7 +3,7 @@ export interface Customer {
     firstName: string;
     lastName: string;
     email: string;
-    address: Address;
+    address?: Address;
     message?: string;
     orderStatus?: "pending" | "completed" | "cancelled" | "working";
     images?: string[];
