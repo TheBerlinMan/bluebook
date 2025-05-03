@@ -270,7 +270,7 @@ const NewCustomerForm = () => {
 
         {/* COMMENTS */}
         <div className="flex flex-col">
-          <label htmlFor="comments">Leave a note</label>
+          <label htmlFor="comments">Leave a message</label>
           <textarea
             rows={3}
             id="comments"
