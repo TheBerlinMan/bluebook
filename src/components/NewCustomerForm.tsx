@@ -6,6 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Info } from "lucide-react";
 import React from "react";
 import { CustomerFormData } from "@/types/Customer";
@@ -249,23 +250,43 @@ const NewCustomerForm = () => {
             />
             <label htmlFor="name">I'll pay for shipping</label>
           </div>
-          <Tooltip delayDuration={0}>
-            <TooltipTrigger asChild>
-              <button
-                type="button"
-                className="p-1 hover:bg-gray-100 rounded-full touch-manipulation"
-              >
-                <Info size={16} />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent side="top" className="max-w-[200px]">
-              <p>
-                You're under no obligation to pay anything, but it would be
-                greatly appreciated if you did. If you select yes, I'll reach
-                out to you once I've confirmed the shipping cost.
-              </p>
-            </TooltipContent>
-          </Tooltip>
+          {/* Mobile: use Popover for touch devices */}
+          <div className="block sm:hidden">
+            <Popover>
+              <PopoverTrigger asChild>
+                <button type="button" className="p-1 hover:bg-gray-100 rounded-full">
+                  <Info size={16} />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="max-w-[200px]">
+                <p>
+                  You're under no obligation to pay anything, but it would be
+                  greatly appreciated if you did. If you select yes, I'll reach
+                  out to you once I've confirmed the shipping cost.
+                </p>
+              </PopoverContent>
+            </Popover>
+          </div>
+          {/* Desktop: tooltip on hover/focus */}
+          <div className="hidden sm:block">
+            <Tooltip delayDuration={0}>
+              <TooltipTrigger asChild>
+                <button
+                  type="button"
+                  className="p-1 hover:bg-gray-100 rounded-full touch-manipulation"
+                >
+                  <Info size={16} />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="top" className="max-w-[200px]">
+                <p>
+                  You're under no obligation to pay anything, but it would be
+                  greatly appreciated if you did. If you select yes, I'll reach
+                  out to you once I've confirmed the shipping cost.
+                </p>
+              </TooltipContent>
+            </Tooltip>
+          </div>
         </div>
 
         {/* COMMENTS */}
@@ -287,7 +308,7 @@ const NewCustomerForm = () => {
         {/* SUBMIT */}
         <button
           type="submit"
-          className="bg-blue-800 text-white px-4 py-2 rounded-md"
+          className="bg-blue-800 text-white px-4 py-2  mt-2 rounded-md"
         >
           Submit
         </button>
