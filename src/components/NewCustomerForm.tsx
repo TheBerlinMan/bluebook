@@ -23,6 +23,7 @@ const initialFormData: CustomerFormData = {
   },
   isInternational: false,
   willPayShipping: false,
+  message: "",
 };
 
 const NewCustomerForm = () => {
@@ -30,6 +31,11 @@ const NewCustomerForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // require note for international shipping
+    if (formData.isInternational && !formData.message?.trim()) {
+      alert("Please leave a note with your full mailing address for international shipping.");
+      return;
+    }
 
     const payload = {
       firstName: formData.firstName,
@@ -266,10 +272,12 @@ const NewCustomerForm = () => {
         <div className="flex flex-col">
           <label htmlFor="comments">Leave a note</label>
           <textarea
+            rows={3}
             id="comments"
-            placeholder={formData.isInternational ? "Please write out your full mailing address" : "Message"}
+            placeholder={formData.isInternational ? "Please write out your full mailing address for international shipping." : "How ya doin?"}
             className="border-2 border-gray-300 rounded-md p-2"
-            value={formData.message}
+            required={formData.isInternational}
+            value={formData.message ?? ""}
             onChange={(e) =>
               setFormData({ ...formData, message: e.target.value })
             }
