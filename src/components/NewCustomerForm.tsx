@@ -6,10 +6,15 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import { Info } from "lucide-react";
 import React from "react";
 import { CustomerFormData } from "@/types/Customer";
+import { Card } from "@/components/ui/card";
 
 const initialFormData: CustomerFormData = {
   firstName: "",
@@ -34,7 +39,9 @@ const NewCustomerForm = () => {
     e.preventDefault();
     // require note for international shipping
     if (formData.isInternational && !formData.message?.trim()) {
-      alert("Please leave a note with your full mailing address for international shipping.");
+      alert(
+        "Please leave a note with your full mailing address for international shipping."
+      );
       return;
     }
 
@@ -69,16 +76,12 @@ const NewCustomerForm = () => {
     }
   };
   return (
-    <div id="modal-form" className="w-full">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full">
-        {/* HEADER */}
-        <div>
-          <p className="text-blue-800 font-normal">
-            The blue book is free of charge. If you'd like one please submit
-            some of your information below.
-          </p>
-        </div>
-
+    <Card className="p-4 mb-4">
+      <div id="modal-form" className="w-full">
+        <form
+          onSubmit={handleSubmit}
+        className="flex flex-col gap-2 w-full font-thin"
+      >
         {/* FIRST & LAST & EMAIL */}
         <div className="flex flex-col gap-1">
           <div className="grid grid-cols-2 gap-2 w-full">
@@ -254,15 +257,18 @@ const NewCustomerForm = () => {
           <div className="block sm:hidden">
             <Popover>
               <PopoverTrigger asChild>
-                <button type="button" className="p-1 hover:bg-gray-100 rounded-full">
+                <button
+                  type="button"
+                  className="p-1 hover:bg-gray-100 rounded-full"
+                >
                   <Info size={16} />
                 </button>
               </PopoverTrigger>
               <PopoverContent className="max-w-[200px]">
                 <p>
-                  You're under no obligation to pay anything, but it would be
-                  greatly appreciated if you did. If you select yes, I'll reach
-                  out to you once I've confirmed the shipping cost.
+                  No pressure, but it would definitely be appreciated. If you
+                  select yes, I'll reach out to you via email once I've
+                  confirmed the shipping cost.
                 </p>
               </PopoverContent>
             </Popover>
@@ -280,9 +286,9 @@ const NewCustomerForm = () => {
               </TooltipTrigger>
               <TooltipContent side="top" className="max-w-[200px]">
                 <p>
-                  You're under no obligation to pay anything, but it would be
-                  greatly appreciated if you did. If you select yes, I'll reach
-                  out to you once I've confirmed the shipping cost.
+                  No pressure, but it would definitely be appreciated. If you
+                  select yes, I'll reach out to you via email once I've
+                  confirmed the shipping cost.
                 </p>
               </TooltipContent>
             </Tooltip>
@@ -295,7 +301,11 @@ const NewCustomerForm = () => {
           <textarea
             rows={3}
             id="comments"
-            placeholder={formData.isInternational ? "Please write out your full mailing address for international shipping." : "How ya doin?"}
+            placeholder={
+              formData.isInternational
+                ? "Please write out your full mailing address for international shipping."
+                : "How ya doin?"
+            }
             className="border-2 border-gray-300 rounded-md p-2"
             required={formData.isInternational}
             value={formData.message ?? ""}
@@ -308,7 +318,8 @@ const NewCustomerForm = () => {
         {/* SUBMIT */}
         <button
           type="submit"
-          className="bg-blue-800 text-white px-4 py-2  mt-2 rounded-md"
+          className="text-blue-800 px-4 py-2  mt-4 rounded-md font-bold cursor-pointer"
+          style={{ backgroundColor: "var(--blue-book-blue)" }}
         >
           Submit
         </button>
@@ -316,13 +327,13 @@ const NewCustomerForm = () => {
 
       {/* FOOTER */}
       <div className="pt-4">
-        <p className="text-blue-800 font-normal">
-          Each blue book is handmade and made to order. They take about a day to
-          make all together, but realistically I'll have it ready in one to two
-          weeks.
-        </p>
+        <p className="font-thin ">
+          They take about a day to make all together, but I'm a salaryman so
+          realistically it takes me about a week per person.
+          </p>
+        </div>
       </div>
-    </div>
+    </Card>
   );
 };
 
