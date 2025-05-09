@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Tooltip,
   TooltipContent,
@@ -34,6 +35,7 @@ const initialFormData: CustomerFormData = {
 
 const NewCustomerForm = () => {
   const [formData, setFormData] = useState<CustomerFormData>(initialFormData);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,9 +72,11 @@ const NewCustomerForm = () => {
       alert("Thanks! Your request has been submitted.");
       // reset form:
       setFormData(initialFormData);
+      // navigate to waitlist page
+      router.push("/waitlist");
     } catch (err: any) {
       console.error(err);
-      alert(err.message || "Oops! Something went wrong.");
+      alert("You forgot to fill something out. Please try again.");
     }
   };
   return (
