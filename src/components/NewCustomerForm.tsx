@@ -76,7 +76,7 @@ const NewCustomerForm = () => {
     }
   };
   return (
-    <Card className="px-6 py-4 mb-4 text-blue-800 font-normal">
+    <Card className="px-6 py-4 mb-4 text-blue-800 border border-blue-800 font-normal">
       <div id="modal-form" className="w-full">
         <form
           onSubmit={handleSubmit}
