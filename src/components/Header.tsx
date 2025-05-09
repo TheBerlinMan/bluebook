@@ -5,7 +5,7 @@ const Header = () => {
     <div style={{ backgroundColor: "#A4DCF9" }}
         className="font-bold text-blue-800 py-4 px-6 flex justify-between items-center drop-shadow-sm shadow-blue-800"
     >
-      <div className="text-2xl">Blue Book</div>
+      <Link href="/" className="text-2xl hover:text-blue-600 transition-colors">Blue Book</Link>
       <div className="flex gap-2">
         {/* <Link href="/signup">Sign Up</Link> */}
         <Link href="/waitlist">Waitlist</Link>

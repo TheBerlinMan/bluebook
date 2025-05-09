@@ -346,12 +346,7 @@ const NewCustomerForm = () => {
       </form>
 
       {/* FOOTER */}
-      <div className="pt-4 pb-2">
-        <p className="font-thin text-center">
-          They take about a day to make all together, but I'm a salaryman so
-          realistically it will take me about a week per person.
-          </p>
-        </div>
+      
       </div>
     </Card>
   );
