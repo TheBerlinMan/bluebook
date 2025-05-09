@@ -5,7 +5,7 @@ import { Customer } from "@/types/Customer";
 import { Card } from "@/components/ui/card";
 import { CircularProgress } from "@mui/material";
 
-export default function CustomerList() {
+const CompletedOrders = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,49 +42,40 @@ export default function CustomerList() {
   return (
     <div>
       <Card className="min-w-full my-4 p-4 border border-blue-800">
-
-    
         <table className="min-w-full text-blue-800">
           <thead>
             <tr className="border-b border-blue-800">
-              <th className=" px-4 py-3 text-center">Priority</th>
-              <th className=" px-4 py-3 text-center border-r border-l border-blue-800">
+              <th className="px-4 py-3 text-center">Finished</th>
+              <th className="px-4 py-3 text-center border-r border-l border-blue-800">
                 Name
               </th>
-              <th className=" px-4 py-3 text-center">Status</th>
+              <th className="px-4 py-3 text-center">Version</th>
             </tr>
           </thead>
           <tbody>
             {customers
               .filter(
                 (customer) =>
-                  customer.orderStatus === "working" ||
-                  customer.orderStatus === "pending"
+                  customer.orderStatus === "completed"
               )
-              .map((customer, index, filteredCustomers) => {
-                const workingCustomers = filteredCustomers.filter(
-                  (c) => c.orderStatus === "working"
-                ).length;
-                const displayPriority =
-                  customer.orderStatus === "working" ? index + 1 : index + 1;
-
-                return (
-                  <tr key={index}>
-                    <td className=" px-2 py-2 text-center font-bold">
-                      {displayPriority}
-                    </td>
-                    <td className=" px-2 py-2 text-center border-r border-l border-blue-800">
-                      {customer.firstName} {customer.lastName}
-                    </td>
-                    <td className=" px-2 py-2 text-center">
-                      {customer.orderStatus}
-                    </td>
-                  </tr>
-                );
-              })}
+              .map((customer, index) => (
+                <tr key={index} className="mb-2">
+                  <td className="px-4 py-2 text-center">
+                    12/12/25
+                  </td>
+                  <td className="px-4 py-2 text-center border-r border-l border-blue-800">
+                    {customer.firstName} {customer.lastName}
+                  </td>
+                  <td className="px-4 py-2 text-center">
+                    v.{customer.firstName}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </Card>
     </div>
   );
-}
+};
+
+export default CompletedOrders
