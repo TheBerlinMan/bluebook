@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { Customer } from "@/types/Customer";
 import { Card } from "@/components/ui/card";
+import { CircularProgress } from "@mui/material";
+
 export default function CustomerList() {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,15 +29,21 @@ export default function CustomerList() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center py-13">
+      <CircularProgress size={45}/>
+    </div>;
   }
   if (error) {
     return <div>Error: {error}</div>;
   }
 
   return (
+    <div>
+        
+  
+        
     <Card className="min-w-full my-4 p-4 border border-blue-800">
-      <table className="min-w-full my-4 text-blue-800">
+      <table className="min-w-full text-blue-800">
         <thead>
           <tr className="border-b border-blue-800">
             <th className=" px-4 py-3 text-center">Priority</th>
@@ -74,5 +82,6 @@ export default function CustomerList() {
         </tbody>
       </table>
     </Card>
+    </div>
   );
 }

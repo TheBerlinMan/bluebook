@@ -4,9 +4,9 @@ import NewCustomerForm from "@/components/NewCustomerForm";
 import CustomerList from "@/components/CustomerList";
 export default function Home() {
   return (
-    <div className="max-w-sm p-4 mx-auto text-blue-800">
+    <div className="max-w-sm  py-2 px-3 mx-auto text-blue-800">
       <div className="flex flex-col gap-4">
-        <p className="text-blue-800 font-medium mt-4 mb- text-center">
+        <p className="text-blue-800 text-md font-medium mt-4 mb- text-center">
           Each blue book is handmade and made to order. If you'd like one please
           submit some of your information below. They're free of charge.
         </p>
