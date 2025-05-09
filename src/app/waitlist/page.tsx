@@ -11,7 +11,7 @@ const page = () => {
       <Tabs defaultValue="pending" className="w-full">
         <TabsList className="w-full mx-auto font-bold">
           <TabsTrigger value="pending" className=''>Pending</TabsTrigger>
-          <TabsTrigger value="completed" className='font-thin'>Completed</TabsTrigger>
+          <TabsTrigger value="completed" className=''>Completed</TabsTrigger>
         </TabsList>
         
         <TabsContent value="pending">
