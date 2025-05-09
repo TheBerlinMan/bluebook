@@ -69,7 +69,7 @@ const NewCustomerForm = () => {
         throw new Error(errorData.error || "Network error");
       }
 
-      alert("Thanks! Your request has been submitted.");
+      alert("Thank you! Your order has been submitted.");
       // reset form:
       setFormData(initialFormData);
       // navigate to waitlist page
