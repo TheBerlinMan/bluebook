@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="max-w-sm p-4 mx-auto text-blue-800">
       <div className="flex flex-col gap-4">
-        <p className="text-blue-800 font-medium my-4">
+        <p className="text-blue-800 font-medium mt-4 mb-1">
           Each blue book is handmade and made to order. If you'd like one please
           submit some of your information below. They're free of charge.
         </p>

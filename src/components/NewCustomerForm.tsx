@@ -76,17 +76,19 @@ const NewCustomerForm = () => {
     }
   };
   return (
-    <Card className="p-4 mb-4">
+    <Card className="p-4 mb-4 border border-blue-800 shadow-md text-blue-800 font-normal">
       <div id="modal-form" className="w-full">
         <form
           onSubmit={handleSubmit}
-        className="flex flex-col gap-2 w-full font-thin"
+        className="flex flex-col gap-2 w-full"
       >
         {/* FIRST & LAST & EMAIL */}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1.5">
           <div className="grid grid-cols-2 gap-2 w-full">
             <div className="flex flex-col">
-              <label htmlFor="name">First Name</label>
+              <label htmlFor="name" >
+                First Name
+              </label>
               <input
                 type="text"
                 placeholder="First Name"
@@ -98,7 +100,9 @@ const NewCustomerForm = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="name">Last Name</label>
+              <label htmlFor="name" >
+                Last Name
+              </label>
               <input
                 type="text"
                 placeholder="Last Name"
@@ -111,7 +115,9 @@ const NewCustomerForm = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email" >
+              Email
+            </label>
             <input
               type="email"
               placeholder="Email"
@@ -135,17 +141,19 @@ const NewCustomerForm = () => {
                 setFormData({ ...formData, isInternational: e.target.checked })
               }
             />
-            <label htmlFor="us-shipping">
+            <label htmlFor="us-shipping" >
               Shipping outside of the United States?
             </label>
           </div>
         </div>
 
         {/* MAILING ADDRESS */}
-        <div className="flex flex-col gap-1">
-          <div>
+        <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5">
             <div className="flex flex-col">
-              <label htmlFor="name">Street Address</label>
+              <label htmlFor="name" >
+                Street Address
+              </label>
               <input
                 type="text"
                 placeholder="Street Address"
@@ -165,7 +173,9 @@ const NewCustomerForm = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="name">Apt, Studio, etc.</label>
+              <label htmlFor="name" >
+                Apt, Studio, etc.
+              </label>
               <input
                 type="text"
                 placeholder="Apt, Studio, etc."
@@ -186,7 +196,9 @@ const NewCustomerForm = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <label htmlFor="name">City</label>
+            <label htmlFor="name" >
+              City
+            </label>
             <input
               type="text"
               placeholder="City"
@@ -204,7 +216,9 @@ const NewCustomerForm = () => {
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="flex flex-col">
-              <label htmlFor="name">State</label>
+              <label htmlFor="name" >
+                State
+              </label>
               <input
                 type="text"
                 placeholder="State"
@@ -221,7 +235,9 @@ const NewCustomerForm = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="name">Zip Code</label>
+              <label htmlFor="name" >
+                Zip Code
+              </label>
               <input
                 type="text"
                 placeholder="Zip Code"
@@ -251,7 +267,9 @@ const NewCustomerForm = () => {
                 setFormData({ ...formData, willPayShipping: e.target.checked })
               }
             />
-            <label htmlFor="name">I'll pay for shipping</label>
+            <label htmlFor="name" >
+              I'll pay for shipping
+            </label>
           </div>
           {/* Mobile: use Popover for touch devices */}
           <div className="block sm:hidden">
@@ -297,7 +315,9 @@ const NewCustomerForm = () => {
 
         {/* COMMENTS */}
         <div className="flex flex-col">
-          <label htmlFor="comments">Leave a message</label>
+          <label htmlFor="comments" >
+            Leave a message
+          </label>
           <textarea
             rows={3}
             id="comments"
@@ -327,9 +347,9 @@ const NewCustomerForm = () => {
 
       {/* FOOTER */}
       <div className="pt-4">
-        <p className="font-thin ">
+        <p className="font-thin">
           They take about a day to make all together, but I'm a salaryman so
-          realistically it takes me about a week per person.
+          realistically it will take me about a week per person.
           </p>
         </div>
       </div>
