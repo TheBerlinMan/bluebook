@@ -8,7 +8,7 @@ const Header = () => {
       <Link href="/" className="text-2xl hover:text-blue-600 transition-colors">Blue Book</Link>
       <div className="flex gap-2">
         {/* <Link href="/signup">Sign Up</Link> */}
-        <Link href="/waitlist">Waitlist</Link>
+        <Link href="/waitlist">Records</Link>
       </div>
     </div>
   );
