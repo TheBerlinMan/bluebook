@@ -80,7 +80,7 @@ const NewCustomerForm = () => {
     }
   };
   return (
-    <Card className="px-6 py-4 mb-4 text-blue-800 border border-blue-800 font-normal">
+    // <Card className="px-6 py-4 mb-4 text-blue-800 border border-blue-800 font-normal">
       <div id="modal-form" className="w-full">
         <form
           onSubmit={handleSubmit}
@@ -342,8 +342,8 @@ const NewCustomerForm = () => {
         {/* SUBMIT */}
         <button
           type="submit"
-          className="text-blue-800 px-4 py-2  mt-4 rounded-md font-bold cursor-pointer"
-          style={{ backgroundColor: "var(--blue-book-blue)" }}
+          className="text-blue-800 px-4 py-2  mt-4 mb-8 rounded-md bg-blue-800 text-white font-bold cursor-pointer"
+          // style={{ backgroundColor: "var(--blue-book-blue)" }}
         >
           Submit
         </button>
@@ -352,7 +352,7 @@ const NewCustomerForm = () => {
       {/* FOOTER */}
       
       </div>
-    </Card>
+    // </Card>
   );
 };
 

@@ -5,10 +5,18 @@ import { Customer } from "@/types/Customer";
 import { Card } from "@/components/ui/card";
 import { CircularProgress } from "@mui/material";
 
+const formatDate = (dateString: string | Date | undefined): string => {
+  if (!dateString) return 'N/A';
+  return new Date(dateString).toLocaleDateString('en-US', { timeZone: 'UTC' });
+};
+
 const CompletedOrders = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+
+  console.log(customers);
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -45,11 +53,11 @@ const CompletedOrders = () => {
         <table className="min-w-full text-blue-800">
           <thead>
             <tr className="border-b border-blue-800">
-              <th className="px-4 py-3 text-center">Finished</th>
-              <th className="px-4 py-3 text-center border-r border-l border-blue-800">
+              <th className="px-4 py-3 text-center ">
                 Name
               </th>
-              <th className="px-4 py-3 text-center">Version</th>
+              <th className="px-4 py-3 text-center border-r border-l border-blue-800">Version</th>
+              <th className="px-4 py-3 text-center">Finished</th>
             </tr>
           </thead>
           <tbody>
@@ -61,13 +69,13 @@ const CompletedOrders = () => {
               .map((customer, index) => (
                 <tr key={index} className="mb-2">
                   <td className="px-4 py-2 text-center">
-                    12/12/25
-                  </td>
-                  <td className="px-4 py-2 text-center border-r border-l border-blue-800">
                     {customer.firstName} {customer.lastName}
                   </td>
-                  <td className="px-4 py-2 text-center">
+                  <td className="px-4 py-2 text-center border-r border-l border-blue-800">
                     v.{customer.firstName}
+                  </td>
+                  <td className="px-4 py-2 text-center">
+                    {formatDate(customer.completedOn)}
                   </td>
                 </tr>
               ))}

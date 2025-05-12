@@ -70,14 +70,15 @@ export default function CustomerList() {
 
                 return (
                   <tr key={index}>
-                    <td className=" px-2 py-2 text-center font-bold">
+                    <td className=" px-2 py-2 text-center">
                       {displayPriority}
                     </td>
                     <td className=" px-2 py-2 text-center border-r border-l border-blue-800">
                       {customer.firstName} {customer.lastName}
                     </td>
                     <td className=" px-2 py-2 text-center">
-                      {customer.orderStatus}
+                      { customer.orderStatus &&
+                      customer.orderStatus?.charAt(0).toUpperCase() + customer.orderStatus?.slice(1)}
                     </td>
                   </tr>
                 );
