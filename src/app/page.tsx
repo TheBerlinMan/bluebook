@@ -4,7 +4,7 @@ import NewCustomerForm from "@/components/NewCustomerForm";
 import CustomerList from "@/components/CustomerList";
 export default function Home() {
   return (
-    <div className="max-w-sm  py-8 mx-auto text-blue-800">
+    <div className="max-w-sm  py-8 px-4 mx-auto text-blue-800">
       <div className="">
         <div className="text-blue-800 text-2xl font-bold text-center mb-1">
           Order Form
