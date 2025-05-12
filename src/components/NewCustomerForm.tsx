@@ -342,7 +342,7 @@ const NewCustomerForm = () => {
         {/* SUBMIT */}
         <button
           type="submit"
-          className="text-blue-800 px-4 py-2  mt-4 mb-8 rounded-md bg-blue-800 text-white font-bold cursor-pointer"
+          className="text-blue-800 px-4 py-2  mt-4 mb-6 rounded-md bg-blue-800 text-white font-bold cursor-pointer"
           // style={{ backgroundColor: "var(--blue-book-blue)" }}
         >
           Submit

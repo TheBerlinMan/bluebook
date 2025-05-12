@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const page = () => {
   return (
-    <div className="py-8 mx-auto max-w-sm">
+    <div className="py-8 px-4 mx-auto max-w-sm">
       <div className="text-blue-800 font-bold text-center text-2xl mb-1">
         Blue Book Records
       </div>
